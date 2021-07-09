@@ -1,0 +1,94 @@
+{
+  "name": "GLD1",
+  "core_name": "GLD1",
+  "log_level": 6,
+  "coreType": "zmq",
+  "only_transmit_on_change": false,
+  "period": 0.01,
+  "connections_required": true,
+  "publications": [
+    {
+      "key": "node_1_A",
+      "type": "complex",
+      "unit": "V",
+      "info": {
+        "object": "node_1",
+        "property": "voltage_A"
+      }
+    },
+    {
+      "key": "node_2_A",
+      "type": "complex",
+      "unit": "V",
+      "info": {
+        "object": "node_2",
+        "property": "voltage_A"
+      }
+    },
+    {
+      "key": "node_3_A",
+      "type": "complex",
+      "unit": "V",
+      "info": {
+        "object": "node_3",
+        "property": "voltage_A"
+      }
+    },
+    {
+      "key": "node_4_A",
+      "type": "complex",
+      "unit": "V",
+      "info": {
+        "object": "node_4",
+        "property": "voltage_A"
+      }
+    },
+    {
+      "key": "node_5_A",
+      "type": "complex",
+      "unit": "V",
+      "info": {
+        "object": "node_5",
+        "property": "voltage_A"
+      }
+    },
+    {
+      "key": "switch_2_3",
+      "type": "complex",
+      "unit": "VA",
+      "info": {
+        "object": "switch_2_3",
+        "property": "power_in"
+      }
+    },
+    {
+      "key": "switch_4_5",
+      "type": "complex",
+      "unit": "VA",
+      "info": {
+        "object": "switch_4_5",
+        "property": "power_in"
+      }
+    }
+  ],
+  "subscriptions": [
+    {
+      "key": "ctr/switch_2_3_set",
+      "type": "string",
+      "unit": "N/A",
+      "info": {
+        "object": "switch_2_3",
+        "property": "status"
+      }
+    },
+    {
+      "key": "ctr/switch_4_5_set",
+      "type": "string",
+      "unit": "N/A",
+      "info": {
+        "object": "switch_4_5",
+        "property": "status"
+      }
+    }
+  ]
+}

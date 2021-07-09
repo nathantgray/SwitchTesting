@@ -1,0 +1,96 @@
+//** PNNL Citadel Project Team
+//** jing.xie@pnnl.gov
+//** Citadels Project (EPB Model)
+//** 2021-5-4 | 2021-4-6
+
+
+// Notes: 1) If a feeder is excluded, you may need to comment the related tie-switches defined in the file "CDL_Tie_Switches.glm". Otherwise, the from/to nodes of some tie-switches may be undefined, leading to the simulation error; 2) The 'line_capacitance' is set as 'FALSE' in default for excluding the line charging. It can be set as 'TRUE' for involving the line charging.
+
+
+//== Time
+clock {
+	timezone EST+5EDT;
+	starttime '2021-01-01 0:00:00';
+	stoptime '2021-01-01 0:00:03';
+};
+
+//== Settings
+#set relax_naming_rules=1
+#set profiler=1
+#set verbose=TRUE
+
+//== DERs & Deltamode
+#set deltamode_forced_always=true
+
+#set deltamode_timestep=10 ms
+#set deltamode_maximumtime=60000000000	//1 minute
+#set deltamode_iteration_limit=10		//Iteration limit
+
+//== Modules
+module tape;
+module reliability {
+	report_event_log false;
+	enable_subsecond_models true;
+}
+module powerflow {
+	solver_method NR;
+	line_capacitance FALSE;
+	enable_subsecond_models true;
+	deltamode_timestep 10 ms;
+	all_powerflow_delta true;
+};
+module generators{
+	enable_subsecond_models true;
+	deltamode_timestep 10 ms;
+};
+module residential;
+module connection{
+	enable_subsecond_models true;
+};
+//== Connect to HELICS
+object helics_msg {
+    name GLD1;
+    configure gld_config.json;
+}
+
+//==Fault Check
+object fault_check {
+	name base_fault_check_object;
+	check_mode ONCHANGE;
+	strictly_radial false;
+	grid_association true; //flag to ensure non-monolithic islands
+}
+
+
+//== Distribution Feeders
+//-- Feeder Equipments
+#include "equipment.glm"
+
+//-- Main model file
+#include "tiny_model.glm"
+
+#include "recorders.glm"
+//== Measurements for Validation
+object voltdump {
+	filename output/voltdump.csv;
+	mode POLAR;
+};
+object currdump {
+	filename output/currdump.csv;
+	mode POLAR;
+};
+
+////== Trigger Deltamode
+class dm_trigger {
+    bool trig;
+}
+object dm_trigger {
+    name trigger;
+    trig true;
+}
+object player {
+	file trigger.player;
+	property trig;
+	parent trigger;
+	flags DELTAMODE;
+}

@@ -1,0 +1,12 @@
+# file...... output/loads_volts_A_mag.csv
+# date...... Fri Jul  9 16:35:40 2021
+# user...... cosim
+# host...... (null)
+# group..... class=load
+# property.. voltage_A
+# limit..... 10000000
+# interval.. 0
+# timestamp,node_3_load,node_5_load
+2021-01-01 00:00:00 EST,7198.558363,7198.045394
+2021-01-01 00:00:01 EST,7198.558363,7198.045394
+2021-01-01 00:00:01 EST,7198.558363,7198.045394

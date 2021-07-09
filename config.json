@@ -1,0 +1,47 @@
+{
+  "name": "ctr",
+  "core_name": "ctr",
+  "log_level": 6,
+  "coreType": "zmq",
+  "timeDelta": 0.001,
+  "publications": [
+    {
+      "key": "switch_2_3_set",
+      "type": "string"
+    },
+    {
+      "key": "switch_4_5_set",
+      "type": "string"
+    }
+  ],
+  "subscriptions": [
+    {
+      "key": "GLD1/node_1_A",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/node_2_A",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/node_3_A",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/node_4_A",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/node_5_A",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/switch_2_3",
+      "type": "complex"
+    },
+    {
+      "key": "GLD1/switch_4_5",
+      "type": "complex"
+    }
+  ]
+}
