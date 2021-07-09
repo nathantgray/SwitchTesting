@@ -10,4 +10,4 @@ Once one switch is opened it is not possible to command any other switches excep
 * In a second console navigate to gridlabd/tiny and run `gridlabd tiny_main.glm`
 
 ### Results:
-To see results of switching open gridlabd/tiny/output/gpr_SWT_status.csv
+To see results of switching, open gridlabd/tiny/output/gpr_SWT_status.csv
