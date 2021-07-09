@@ -87,7 +87,6 @@ def run():
         print(f"{fed_name}: Granted time: {granted_time}")
         # ~~~~~~~~~~~~~ Get data from GLD ~~~~~~~~~~~~~~~~~~~~~~~~
         values = [getSubValues(sub) for sub in link['sub'].values()]  # Get data from each phase and put in list.
-        units = [h.helicsInputGetInjectionUnits(sub) for sub in link['sub'].values()]
         print(f"{fed_name}: Sub received value = {values} at time {granted_time} from GLD1")
 
         # ~~~~~~~~~~~~~ Send data to GLD ~~~~~~~~~~~~~~~~~~~~~~~~
